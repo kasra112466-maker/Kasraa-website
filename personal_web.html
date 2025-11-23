@@ -1,0 +1,898 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About Me - Kasra Korivand</title>
+<style>
+    /* ===== Fonts ===== */
+    @font-face {
+      font-family: 'FuturaLight';
+      src: url('fonts/Futura-Light.otf') format('opentype');
+      font-weight: 300;
+      font-style: normal;
+    }
+    @font-face {
+      font-family: 'Poppins-ExtraBold';
+      src: url('fonts/Poppins-ExtraBold.ttf');
+      font-weight: 300;
+      font-style: normal;
+    }
+    @font-face {
+      font-family: 'Roboto-Regular';
+      src: url('fonts/Roboto-Regular.ttf');
+      font-weight: 300;
+      font-style: normal;
+    }
+    @font-face {
+        font-family: 'Roboto-Bold';
+        src: url('fonts/Roboto-Bold.ttf');
+        font-weight: 900;
+        font-style: normal;
+    }
+
+    /* ===== Modern Color Palette ===== */
+    :root {
+        --primary: #6366f1;
+        --primary-dark: #4f46e5;
+        --primary-light: #818cf8;
+        --accent: #ec4899;
+        --accent-dark: #db2777;
+        --bg-dark: #0f172a;
+        --bg-darker: #020617;
+        --bg-card: rgba(15, 23, 42, 0.8);
+        --bg-glass: rgba(255, 255, 255, 0.1);
+        --text-light: #f1f5f9;
+        --text-gray: #94a3b8;
+        --text-muted: #64748b;
+        --gradient-1: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        --gradient-2: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        --gradient-3: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+        --gradient-4: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+        --shadow-glow: 0 0 30px rgba(99, 102, 241, 0.3);
+        --shadow-glow-pink: 0 0 30px rgba(236, 72, 153, 0.3);
+        --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        margin: 0;
+        font-family: 'Roboto-Regular', sans-serif;
+        background: var(--bg-darker);
+        background-image: 
+            radial-gradient(at 0% 0%, rgba(99, 102, 241, 0.15) 0px, transparent 50%),
+            radial-gradient(at 100% 0%, rgba(236, 72, 153, 0.15) 0px, transparent 50%),
+            radial-gradient(at 100% 100%, rgba(79, 70, 229, 0.15) 0px, transparent 50%),
+            radial-gradient(at 0% 100%, rgba(59, 130, 246, 0.15) 0px, transparent 50%);
+        background-size: 400% 400%;
+        animation: gradientShift 15s ease infinite;
+        color: var(--text-light);
+        line-height: 1.6;
+        overflow-x: hidden;
+        position: relative;
+        min-height: 100vh;
+    }
+
+    @keyframes gradientShift {
+        0%, 100% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+    }
+
+    /* Animated Particles */
+    .particles {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        z-index: 1;
+        overflow: hidden;
+    }
+
+    .particle {
+        position: absolute;
+        width: 4px;
+        height: 4px;
+        background: var(--primary-light);
+        border-radius: 50%;
+        opacity: 0.6;
+        animation: float 20s infinite;
+    }
+
+    @keyframes float {
+        0% {
+            transform: translateY(100vh) translateX(0) rotate(0deg);
+            opacity: 0;
+        }
+        10% {
+            opacity: 0.6;
+        }
+        90% {
+            opacity: 0.6;
+        }
+        100% {
+            transform: translateY(-100vh) translateX(100px) rotate(360deg);
+            opacity: 0;
+        }
+    }
+
+    .container {
+        width: 100%;
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 0 clamp(20px, 6vw, 120px);
+        padding-top: 120px;
+        padding-bottom: 120px;
+        position: relative;
+        z-index: 2;
+    }
+
+    /* ===== Glassmorphism Navigation ===== */
+    .top_section {
+        position: fixed;
+        top: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: calc(100% - 40px);
+        max-width: 1200px;
+        height: 70px;
+        background: rgba(15, 23, 42, 0.7);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 20px;
+        z-index: 1000;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 clamp(24px, 4vw, 48px);
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        transition: var(--transition);
+    }
+
+    .top_section:hover {
+        background: rgba(15, 23, 42, 0.85);
+        box-shadow: 0 12px 40px rgba(99, 102, 241, 0.2);
+    }
+
+    .name1 {
+        display: flex;
+        align-items: center;
+        gap: clamp(16px, 2.5vw, 24px);
+    }
+
+    .name1 h1 {
+        margin: 0;
+        font-family: 'Roboto-Bold', sans-serif;
+        font-size: clamp(20px, 2.5vw, 28px);
+        background: var(--gradient-1);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        letter-spacing: 0.02em;
+    }
+
+    .subject2-link {
+        text-decoration: none;
+        color: inherit;
+        display: inline-flex;
+        align-items: center;
+        gap: 12px;
+        transition: var(--transition);
+    }
+
+    .subject2-link:hover {
+        opacity: 0.8;
+        transform: translateX(-4px);
+    }
+
+    .subject2 {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+    }
+
+    .subject2 h3 {
+        margin: 0;
+        font-family: 'FuturaLight', sans-serif;
+        color: var(--text-gray);
+        font-size: clamp(11px, 1.5vw, 14px);
+        letter-spacing: 0.2em;
+        cursor: pointer;
+    }
+
+    .square1 {
+        width: 16px;
+        height: 16px;
+        background: var(--gradient-1);
+        border-radius: 4px;
+        animation: pulse 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+        0%, 100% { transform: scale(1); opacity: 1; }
+        50% { transform: scale(1.2); opacity: 0.8; }
+    }
+
+    /* ===== Modern Navigation Buttons ===== */
+    .corner_button {
+        display: flex;
+        gap: 12px;
+        flex-wrap: wrap;
+    }
+
+    .corner_button button {
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        color: var(--text-gray);
+        font-family: 'FuturaLight', sans-serif;
+        font-size: clamp(11px, 1.3vw, 13px);
+        letter-spacing: 0.15em;
+        padding: 10px 20px;
+        border-radius: 12px;
+        cursor: pointer;
+        transition: var(--transition);
+        position: relative;
+        overflow: hidden;
+    }
+
+    .corner_button button::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: var(--gradient-1);
+        transition: left 0.4s;
+        z-index: -1;
+    }
+
+    .corner_button button:hover::before {
+        left: 0;
+    }
+
+    .corner_button button:hover {
+        color: white;
+        border-color: transparent;
+        transform: translateY(-2px);
+        box-shadow: var(--shadow-glow);
+    }
+
+    .button10 {
+        background: var(--gradient-1);
+        color: white;
+        border-color: transparent;
+    }
+
+    .button10::before {
+        display: none;
+    }
+
+    /* ===== Hero Section ===== */
+    .main_content {
+        display: grid;
+        grid-template-columns: 1fr 1.2fr;
+        gap: clamp(60px, 8vw, 120px);
+        align-items: center;
+        margin-top: clamp(60px, 8vw, 100px);
+        animation: fadeInUp 1s ease-out;
+    }
+
+    @keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateY(40px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    /* ===== Photo Card with 3D Effect ===== */
+    .photo_box {
+        position: relative;
+        width: 100%;
+        max-width: 500px;
+        margin: 0 auto;
+        perspective: 1000px;
+    }
+
+    .main_box {
+        position: relative;
+        width: 100%;
+        background: rgba(15, 23, 42, 0.6);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 30px;
+        padding: 50px clamp(30px, 5vw, 50px);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        transition: var(--transition);
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+        transform-style: preserve-3d;
+    }
+
+    .main_box:hover {
+        transform: rotateY(5deg) rotateX(-5deg) translateY(-10px);
+        box-shadow: 0 30px 80px rgba(99, 102, 241, 0.3);
+    }
+
+    .photo {
+        aspect-ratio: 1;
+        width: 200px;
+        margin: 0 auto 30px;
+        position: relative;
+    }
+
+    .photo::before {
+        content: '';
+        position: absolute;
+        top: -10px;
+        left: -10px;
+        right: -10px;
+        bottom: -10px;
+        border-radius: 50%;
+        background: var(--gradient-1);
+        background-size: 200% 200%;
+        animation: gradientRotate 3s ease infinite;
+        z-index: -1;
+        filter: blur(20px);
+        opacity: 0.6;
+    }
+
+    @keyframes gradientRotate {
+        0%, 100% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+    }
+
+    .photo img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 50%;
+        border: 4px solid rgba(255, 255, 255, 0.2);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        transition: var(--transition);
+    }
+
+    .main_box:hover .photo img {
+        transform: scale(1.05);
+        box-shadow: 0 25px 50px rgba(99, 102, 241, 0.4);
+    }
+
+    .name2 {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 8px;
+        margin-bottom: 20px;
+    }
+
+    .name2 h1 {
+        margin: 0;
+        font-family: 'Poppins-ExtraBold', sans-serif;
+        font-size: clamp(32px, 4vw, 42px);
+        background: var(--gradient-1);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        letter-spacing: 0.02em;
+    }
+
+    .line {
+        width: 80px;
+        height: 2px;
+        background: var(--gradient-1);
+        margin: 20px 0;
+        border-radius: 2px;
+    }
+
+    .subject h3 {
+        font-family: 'FuturaLight', sans-serif;
+        color: var(--text-gray);
+        font-size: clamp(13px, 1.8vw, 16px);
+        letter-spacing: 0.3em;
+        margin: 0;
+    }
+
+    .social {
+        width: 100%;
+        padding-top: 30px;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        margin-top: auto;
+    }
+
+    .apps {
+        display: flex;
+        justify-content: center;
+        gap: 16px;
+        flex-wrap: wrap;
+    }
+
+    .apps a {
+        width: 50px;
+        height: 50px;
+        background: rgba(255, 255, 255, 0.05);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 16px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: var(--transition);
+        position: relative;
+        overflow: hidden;
+    }
+
+    .apps a::before {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 0;
+        height: 0;
+        background: var(--gradient-1);
+        border-radius: 50%;
+        transform: translate(-50%, -50%);
+        transition: width 0.4s, height 0.4s;
+    }
+
+    .apps a:hover::before {
+        width: 100%;
+        height: 100%;
+    }
+
+    .apps a:hover {
+        transform: translateY(-5px) scale(1.1);
+        border-color: transparent;
+        box-shadow: var(--shadow-glow);
+    }
+
+    .apps img {
+        width: 24px;
+        height: 24px;
+        filter: brightness(0) invert(1);
+        position: relative;
+        z-index: 1;
+        transition: var(--transition);
+    }
+
+    .apps a:hover img {
+        filter: brightness(0) invert(1);
+    }
+
+    /* ===== Text Content ===== */
+    .text_content {
+        display: flex;
+        flex-direction: column;
+        gap: clamp(30px, 5vw, 50px);
+    }
+
+    .hello {
+        font-family: 'Poppins-ExtraBold', sans-serif;
+        font-size: clamp(70px, 12vw, 120px);
+        line-height: 1;
+        margin: 0;
+        background: var(--gradient-1);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        background-size: 200% 200%;
+        animation: gradientShift 4s ease infinite;
+        position: relative;
+    }
+
+    .what_i_do {
+        font-family: 'Roboto-Regular', sans-serif;
+        font-size: clamp(24px, 3.5vw, 32px);
+        color: var(--text-light);
+        margin: 0;
+        opacity: 0.9;
+    }
+
+    .buttons_and_text {
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+    }
+
+    .buttons {
+        display: flex;
+        gap: 20px;
+        flex-wrap: wrap;
+    }
+
+    .button1,
+    .button2 {
+        height: 55px;
+        min-width: 160px;
+        border-radius: 16px;
+        font-family: 'Roboto-Regular', sans-serif;
+        font-size: clamp(15px, 1.8vw, 18px);
+        font-weight: 600;
+        cursor: pointer;
+        transition: var(--transition);
+        border: none;
+        padding: 0 36px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .button1 {
+        background: var(--gradient-1);
+        color: white;
+        box-shadow: 0 10px 30px rgba(99, 102, 241, 0.4);
+    }
+
+    .button1::before {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 0;
+        height: 0;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.3);
+        transform: translate(-50%, -50%);
+        transition: width 0.6s, height 0.6s;
+    }
+
+    .button1:hover::before {
+        width: 400px;
+        height: 400px;
+    }
+
+    .button1:hover {
+        transform: translateY(-5px) scale(1.05);
+        box-shadow: 0 15px 40px rgba(99, 102, 241, 0.5);
+    }
+
+    .button2 {
+        background: rgba(255, 255, 255, 0.05);
+        backdrop-filter: blur(10px);
+        color: var(--text-light);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .button2::before {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 0;
+        height: 0;
+        border-radius: 50%;
+        background: var(--gradient-2);
+        transform: translate(-50%, -50%);
+        transition: width 0.6s, height 0.6s;
+        z-index: -1;
+    }
+
+    .button2:hover::before {
+        width: 400px;
+        height: 400px;
+    }
+
+    .button2:hover {
+        transform: translateY(-5px) scale(1.05);
+        border-color: transparent;
+        box-shadow: var(--shadow-glow-pink);
+    }
+
+    .about_me {
+        font-size: clamp(16px, 2vw, 20px);
+        line-height: 1.8;
+        color: var(--text-gray);
+        margin: 0;
+        max-width: 600px;
+    }
+
+    /* ===== Footer ===== */
+    footer {
+        width: 100%;
+        background: rgba(15, 23, 42, 0.6);
+        backdrop-filter: blur(20px);
+        margin-top: clamp(80px, 10vw, 150px);
+        padding: clamp(40px, 6vw, 60px) clamp(24px, 6vw, 120px);
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .copy_powered {
+        font-size: clamp(13px, 1.6vw, 15px);
+        font-family: 'Roboto-Regular', sans-serif;
+        color: var(--text-muted);
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        max-width: 1400px;
+        margin: 0 auto;
+        text-align: center;
+    }
+
+    .copy_powered p {
+        margin: 0;
+    }
+
+    /* ===== Responsive ===== */
+    @media (max-width: 1024px) {
+        .main_content {
+            grid-template-columns: 1fr;
+            gap: 60px;
+        }
+
+        .text_content {
+            order: -1;
+            text-align: center;
+            align-items: center;
+        }
+
+        .top_section {
+            flex-direction: column;
+            height: auto;
+            min-height: auto;
+            padding: 20px;
+            gap: 20px;
+            justify-content: center;
+            position: static;
+            transform: none;
+            left: auto;
+            right: auto;
+            margin: 0 auto;
+        }
+
+        .name1 {
+            width: 100%;
+            justify-content: center;
+        }
+
+        .corner_button {
+            width: 100%;
+            justify-content: center;
+        }
+
+        .container {
+            padding-top: 140px;
+        }
+    }
+
+    @media (max-width: 768px) {
+        body {
+            padding-top: 0;
+        }
+
+        .container {
+            padding-top: 2rem;
+            padding-left: 1.5rem;
+            padding-right: 1.5rem;
+        }
+
+        .top_section {
+            position: static;
+            top: 10px;
+            width: calc(100% - 20px);
+            margin-bottom: 20px;
+            justify-content: center;
+            position: static;
+            transform: none;
+            left: auto;
+            right: auto;
+            margin: 0 auto;
+        }
+
+        .corner_button {
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .corner_button button {
+            flex: 1 1 calc(50% - 4px);
+            min-width: 0;
+            font-size: 11px;
+            padding: 8px 12px;
+        }
+
+        .photo {
+            width: 150px;
+        }
+
+        .buttons {
+            flex-direction: column;
+            width: 100%;
+        }
+
+        .button1,
+        .button2 {
+            width: 100%;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .top_section {
+            padding: 15px;
+            border-radius: 16px;
+            justify-content: center;
+            position: static;
+            transform: none;
+            left: auto;
+            right: auto;
+            margin: 0 auto;
+        }
+
+        .name1 {
+            flex-direction: column;
+            text-align: center;
+            gap: 10px;
+        }
+
+        .name1 h1 {
+            font-size: 18px;
+        }
+
+        .subject2 h3 {
+            font-size: 9px;
+        }
+
+        .corner_button {
+            flex-direction: column;
+            width: 100%;
+            gap: 8px;
+        }
+
+        .corner_button button {
+            width: 100%;
+            max-width: 100%;
+            font-size: 10px;
+            padding: 10px;
+        }
+
+        .container {
+            padding-bottom: 5rem;
+            padding-left: 1rem;
+            padding-right: 1rem;
+        }
+    }
+</style>
+</head>
+<body>
+    <div class="particles" id="particles"></div>
+
+    <div class="container">
+        <div class="top_section">
+            <div class="name1">
+                <h1>Kasra Korivand</h1>
+                <a href="personal_web.html" class="subject2-link">
+                    <div class="subject2">
+                        <div class="square1"></div>
+                        <h3>/ P R O G R A M M E R</h3>
+                    </div>
+                </a>
+            </div>
+
+            <div class="corner_button">
+                <button class="button10" onclick="location.href='Personal_web.html'">ABOUT ME</button>
+                <button class="button11" onclick="location.href='resume.html'">RESUME</button>
+                <button class="button12" onclick="location.href='projects.html'">FUN FACTS</button>
+                <button class="button13" onclick="location.href='contact.html'">CONTACT</button>
+            </div>
+        </div>
+
+        <div class="main_content">
+            <div class="photo_box">
+                <div class="main_box">
+                    <div class="photo">
+                        <img src="icons/Screenshot 2025-08-31 234351.png" alt="Kasra Korivand">
+                    </div>
+
+                    <div class="name2">
+                        <h1>Kasra</h1>
+                        <h1 class="family">Korivand</h1>
+                    </div>
+
+                    <div class="line"></div>
+
+                    <div class="subject">
+                        <h3>P R O G R A M M E R</h3>
+                    </div>
+
+                    <div class="social">
+                        <div class="apps">
+                            <a href="https://www.instagram.com/itskasra?igsh=MWM4NjY0MHVvODJwZQ==" target="_blank">
+                                <img src="icons/icons8-instagram.svg" alt="Instagram"> 
+                            </a>
+                            <a href="https://t.me/calKasra" target="_blank">
+                                <img src="icons/icons8-telegram.svg" alt="Telegram">
+                            </a>
+                            <a href="https://w.me/989339825937" target="_blank">
+                                <img src="icons/icons8-whatsapp.svg" alt="WhatsApp">
+                            </a>
+                            <a href="https://x.com/kasra112466?s=21" target="_blank">
+                                <img src="icons/icons8-x.svg" alt="X (Twitter)">
+                            </a>
+                            <a href="tel:+989920212433" target="_blank">
+                                <img src="icons/icons8-phone.svg" alt="Phone">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text_content">
+                <h1 class="hello">Hello</h1>
+                <p class="what_i_do">Here's who I am & what I do</p>
+                
+                <div class="buttons_and_text">
+                    <div class="buttons">
+                        <button class="button1" onclick="location.href='resume.html'">RESUME</button>
+                        <button class="button2" onclick="location.href='projects.html'">FUN FACTS</button>
+                    </div>
+                    
+                    <p class="about_me">
+                        I'm a junior web developer and designer with a focus on front-end development.
+                        I have experience working with HTML and CSS to create responsive, user-friendly websites.
+                        I'm passionate about learning new technologies and improving my design and coding skills.
+                        My goal is to build clean, modern, and efficient websites that deliver great user experiences.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="copy_powered">
+            <p class="copy">© 2035 by Kasra Korivand.</p>
+            <p class="powered">Powered and secured by Kasra.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Create animated particles
+        const particlesContainer = document.getElementById('particles');
+        const particleCount = 50;
+
+        for (let i = 0; i < particleCount; i++) {
+            const particle = document.createElement('div');
+            particle.className = 'particle';
+            particle.style.left = Math.random() * 100 + '%';
+            particle.style.animationDelay = Math.random() * 20 + 's';
+            particle.style.animationDuration = (15 + Math.random() * 10) + 's';
+            particle.style.width = particle.style.height = (2 + Math.random() * 3) + 'px';
+            particlesContainer.appendChild(particle);
+        }
+
+        // 3D tilt effect for photo box
+        const photoBox = document.querySelector('.photo_box');
+        if (photoBox) {
+            photoBox.addEventListener('mousemove', (e) => {
+                const rect = photoBox.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+                const rotateX = (y - centerY) / 10;
+                const rotateY = (centerX - x) / 10;
+                
+                photoBox.querySelector('.main_box').style.transform = 
+                    `rotateY(${rotateY}deg) rotateX(${rotateX}deg) translateY(-10px)`;
+            });
+
+            photoBox.addEventListener('mouseleave', () => {
+                photoBox.querySelector('.main_box').style.transform = 
+                    'rotateY(0) rotateX(0) translateY(0)';
+            });
+        }
+    </script>
+</body>
+</html>

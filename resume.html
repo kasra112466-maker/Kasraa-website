@@ -1,0 +1,1250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Resume - Kasra Korivand</title>
+<style>
+    /* ===== Fonts ===== */
+    @font-face {
+      font-family: 'FuturaLight';
+      src: url('fonts/Futura-Light.otf') format('opentype');
+      font-weight: 300;
+      font-style: normal;
+    }
+    @font-face {
+      font-family: 'Poppins-ExtraBold';
+      src: url('fonts/Poppins-ExtraBold.ttf');
+      font-weight: 300;
+      font-style: normal;
+    }
+    @font-face {
+      font-family: 'Roboto-Regular';
+      src: url('fonts/Roboto-Regular.ttf');
+      font-weight: 300;
+      font-style: normal;
+    }
+    @font-face {
+        font-family: 'Roboto-Bold';
+        src: url('fonts/Roboto-Bold.ttf');
+        font-weight: 900;
+        font-style: normal;
+    }
+
+    /* ===== Modern Color Palette ===== */
+    :root {
+        --primary: #6366f1;
+        --primary-dark: #4f46e5;
+        --primary-light: #818cf8;
+        --accent: #ec4899;
+        --accent-dark: #db2777;
+        --bg-dark: #0f172a;
+        --bg-darker: #020617;
+        --bg-card: rgba(15, 23, 42, 0.8);
+        --bg-glass: rgba(255, 255, 255, 0.1);
+        --text-light: #f1f5f9;
+        --text-gray: #94a3b8;
+        --text-muted: #64748b;
+        --gradient-1: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        --gradient-2: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        --gradient-3: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+        --gradient-4: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+        --shadow-glow: 0 0 30px rgba(99, 102, 241, 0.3);
+        --shadow-glow-pink: 0 0 30px rgba(236, 72, 153, 0.3);
+        --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        margin: 0;
+        font-family: 'Roboto-Regular', sans-serif;
+        background: var(--bg-darker);
+        background-image: 
+            radial-gradient(at 0% 0%, rgba(99, 102, 241, 0.15) 0px, transparent 50%),
+            radial-gradient(at 100% 0%, rgba(236, 72, 153, 0.15) 0px, transparent 50%),
+            radial-gradient(at 100% 100%, rgba(79, 70, 229, 0.15) 0px, transparent 50%),
+            radial-gradient(at 0% 100%, rgba(59, 130, 246, 0.15) 0px, transparent 50%);
+        background-size: 400% 400%;
+        animation: gradientShift 15s ease infinite;
+        color: var(--text-light);
+        line-height: 1.6;
+        overflow-x: hidden;
+        position: relative;
+        min-height: 100vh;
+    }
+
+    @keyframes gradientShift {
+        0%, 100% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+    }
+
+    body::before {
+        content: '';
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: 
+            radial-gradient(circle at 20% 50%, rgba(0, 81, 248, 0.08) 0%, transparent 50%),
+            radial-gradient(circle at 80% 80%, rgba(224, 213, 203, 0.2) 0%, transparent 50%);
+        animation: backgroundMove 25s ease-in-out infinite;
+        pointer-events: none;
+        z-index: 0;
+    }
+
+    @keyframes backgroundMove {
+        0%, 100% {
+            transform: translate(0, 0) scale(1);
+        }
+        50% {
+            transform: translate(-30px, -30px) scale(1.1);
+        }
+    }
+
+    .container {
+        width: 100%;
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 0 clamp(20px, 6vw, 120px);
+        padding-top: 120px;
+        padding-bottom: 120px;
+        position: relative;
+        z-index: 2;
+    }
+
+    /* ===== Glassmorphism Navigation ===== */
+    .top_section {
+        position: fixed;
+        top: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: calc(100% - 40px);
+        max-width: 1200px;
+        height: 70px;
+        background: rgba(15, 23, 42, 0.7);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 20px;
+        z-index: 1000;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 clamp(24px, 4vw, 48px);
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        transition: var(--transition);
+    }
+
+    .top_section:hover {
+        background: rgba(15, 23, 42, 0.85);
+        box-shadow: 0 12px 40px rgba(99, 102, 241, 0.2);
+    }
+
+    .name1 {
+        display: flex;
+        align-items: center;
+        gap: clamp(16px, 2.5vw, 24px);
+    }
+
+    .name1 h1 {
+        margin: 0;
+        font-family: 'Roboto-Bold', sans-serif;
+        font-size: clamp(20px, 2.5vw, 28px);
+        background: var(--gradient-1);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        letter-spacing: 0.02em;
+    }
+
+    .subject2-link {
+        text-decoration: none;
+        color: inherit;
+        display: inline-flex;
+        align-items: center;
+        gap: 12px;
+        transition: var(--transition);
+    }
+
+    .subject2-link:hover {
+        opacity: 0.8;
+        transform: translateX(-4px);
+    }
+
+    .subject2 {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+    }
+
+    .subject2 h3 {
+        margin: 0;
+        font-family: 'FuturaLight', sans-serif;
+        color: var(--text-gray);
+        font-size: clamp(11px, 1.5vw, 14px);
+        letter-spacing: 0.2em;
+        cursor: pointer;
+    }
+
+    .square1 {
+        width: 16px;
+        height: 16px;
+        background: var(--gradient-1);
+        border-radius: 4px;
+        animation: pulse 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+        0%, 100% { transform: scale(1); opacity: 1; }
+        50% { transform: scale(1.2); opacity: 0.8; }
+    }
+
+    /* ===== Modern Navigation Buttons ===== */
+    .corner_button {
+        display: flex;
+        gap: 12px;
+        flex-wrap: wrap;
+    }
+
+    .corner_button button {
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        color: var(--text-gray);
+        font-family: 'FuturaLight', sans-serif;
+        font-size: clamp(11px, 1.3vw, 13px);
+        letter-spacing: 0.15em;
+        padding: 10px 20px;
+        border-radius: 12px;
+        cursor: pointer;
+        transition: var(--transition);
+        position: relative;
+        overflow: hidden;
+    }
+
+    .corner_button button::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: var(--gradient-1);
+        transition: left 0.4s;
+        z-index: -1;
+    }
+
+    .corner_button button:hover::before {
+        left: 0;
+    }
+
+    .corner_button button:hover {
+        color: white;
+        border-color: transparent;
+        transform: translateY(-2px);
+        box-shadow: var(--shadow-glow);
+    }
+
+    .button11 {
+        background: var(--gradient-1);
+        color: white;
+        border-color: transparent;
+    }
+
+    .button11::before {
+        display: none;
+    }
+
+    /* ===== Top Resume Header ===== */
+    .top_resume {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
+        margin-bottom: 80px;
+        animation: fadeInDown 0.8s ease-out;
+    }
+
+    @keyframes fadeInDown {
+        from {
+            opacity: 0;
+            transform: translateY(-30px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    .square2-container {
+        width: clamp(28px, 3.5vw, 36px);
+        height: clamp(28px, 3.5vw, 36px);
+        flex-shrink: 0;
+        animation: rotate 3s ease-in-out infinite;
+    }
+
+    @keyframes rotate {
+        0%, 100% { transform: rotate(0deg); }
+        50% { transform: rotate(180deg); }
+    }
+
+    .square2 {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+    }
+
+    .reesume {
+        font-family: 'Roboto-Bold', sans-serif;
+        font-size: clamp(32px, 5vw, 56px);
+        margin: 0;
+        letter-spacing: 0.4em;
+        background: var(--gradient-1);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        background-size: 200% 200%;
+        animation: gradientShift 4s ease infinite;
+        position: relative;
+    }
+
+    @keyframes gradientShift {
+        0%, 100% {
+            background-position: 0% 50%;
+        }
+        50% {
+            background-position: 100% 50%;
+        }
+    }
+
+    .reesume::after {
+        content: '';
+        position: absolute;
+        bottom: -15px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 0;
+        height: 4px;
+        background: linear-gradient(90deg, transparent, var(--primary-blue), transparent);
+        animation: expandLine 1.5s ease-out 0.5s forwards;
+    }
+
+    @keyframes expandLine {
+        to {
+            width: 150px;
+        }
+    }
+
+    /* ===== Section Headings ===== */
+    .experiencee,
+    .Education {
+        position: relative;
+        margin: clamp(60px, 8vw, 120px) 0 clamp(40px, 5vw, 60px) clamp(0px, 8vw, 120px);
+        font-family: 'Roboto-Bold', sans-serif;
+        font-size: clamp(28px, 4vw, 42px);
+        letter-spacing: 0.1em;
+        color: var(--text-dark);
+    }
+
+    .experiencee {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 24px;
+        flex-wrap: wrap;
+    }
+
+    .experiencee h2 {
+        margin: 0;
+        font-family: 'Roboto-Bold', sans-serif;
+        font-size: clamp(28px, 4vw, 42px);
+        letter-spacing: 0.1em;
+        color: var(--text-light);
+    }
+
+    /* ===== Download CV Button ===== */
+    .download_cv {
+        position: static;
+        background: var(--gradient-1);
+        color: white;
+        border: none;
+        border-radius: 16px;
+        padding: 14px 36px;
+        font-family: 'Roboto-Regular', sans-serif;
+        font-size: clamp(15px, 1.8vw, 18px);
+        font-weight: 600;
+        cursor: pointer;
+        transition: var(--transition);
+        white-space: nowrap;
+        box-shadow: 0 10px 30px rgba(99, 102, 241, 0.4);
+        margin: 0;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .download_cv::before {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 0;
+        height: 0;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.3);
+        transform: translate(-50%, -50%);
+        transition: width 0.6s, height 0.6s;
+    }
+
+    .download_cv:hover::before {
+        width: 300px;
+        height: 300px;
+    }
+
+    .download_cv:hover {
+        transform: translateY(-5px) scale(1.05);
+        box-shadow: 0 15px 40px rgba(99, 102, 241, 0.5);
+    }
+
+    .download_cv:active {
+        transform: translateY(-2px) scale(1.02);
+    }
+
+    /* ===== Modern Resume Cards ===== */
+    .box1,
+    .box2,
+    .box3 {
+        position: relative;
+        width: clamp(320px, 90%, 900px);
+        max-width: 900px;
+        margin: 0 auto clamp(40px, 5vw, 60px) auto;
+        background: rgba(15, 23, 42, 0.6);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 30px;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+        padding: clamp(40px, 6vw, 70px);
+        transition: var(--transition);
+        overflow: hidden;
+        opacity: 0;
+        transform: translateY(40px);
+    }
+
+    .box1.animate,
+    .box2.animate,
+    .box3.animate {
+        opacity: 1;
+        transform: translateY(0);
+        transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .box1::before,
+    .box2::before,
+    .box3::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(99, 102, 241, 0.1), transparent);
+        transition: left 0.6s;
+    }
+
+    .box1:hover::before,
+    .box2:hover::before,
+    .box3:hover::before {
+        left: 100%;
+    }
+
+    .box1:hover,
+    .box2:hover,
+    .box3:hover {
+        transform: translateY(-10px) scale(1.02);
+        box-shadow: 0 30px 80px rgba(99, 102, 241, 0.3);
+        border-color: rgba(99, 102, 241, 0.3);
+    }
+
+    .box1 {
+        margin-top: clamp(40px, 6vw, 80px);
+    }
+
+    .year,
+    .year2 {
+        font-family: 'Roboto-Bold', sans-serif;
+        font-size: clamp(20px, 2.5vw, 26px);
+        background: var(--gradient-1);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        margin: 0 0 16px 0;
+        display: block;
+        position: relative;
+    }
+
+    .year::before,
+    .year2::before {
+        content: '';
+        position: absolute;
+        left: -15px;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 8px;
+        height: 8px;
+        background: var(--primary-blue);
+        border-radius: 50%;
+        box-shadow: 0 0 10px rgba(0, 81, 248, 0.5);
+        animation: pulseDot 2s ease-in-out infinite;
+    }
+
+    @keyframes pulseDot {
+        0%, 100% {
+            transform: translateY(-50%) scale(1);
+            opacity: 1;
+        }
+        50% {
+            transform: translateY(-50%) scale(1.5);
+            opacity: 0.7;
+        }
+    }
+
+    .job_position,
+    .school {
+        font-size: clamp(18px, 2.2vw, 22px);
+        font-family: 'Roboto-Bold', sans-serif;
+        color: var(--text-light);
+        margin: 0 0 8px 0;
+        letter-spacing: 0.05em;
+    }
+
+    .grade,
+    .location {
+        font-size: clamp(14px, 1.8vw, 16px);
+        color: rgb(105, 105, 105);
+        margin: 4px 0;
+        font-family: 'Roboto-Regular', sans-serif;
+    }
+
+    .box1_text,
+    .box2_text {
+        width: 100%;
+        max-width: 600px;
+        font-size: clamp(16px, 2vw, 19px);
+        font-family: 'Roboto-Regular', sans-serif;
+        line-height: 1.8;
+        color: var(--text-gray);
+        margin: clamp(20px, 3vw, 32px) 0 0 auto;
+        text-align: left;
+    }
+
+    /* ===== Skills Section ===== */
+    .Professional_skillset,
+    .Languages {
+        font-family: 'Poppins-ExtraBold', sans-serif;
+        font-size: clamp(22px, 3vw, 30px);
+        margin: clamp(40px, 5vw, 60px) 0 clamp(24px, 3vw, 32px) 0;
+        letter-spacing: 0.05em;
+        color: var(--text-dark);
+    }
+
+    .skills {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: clamp(20px, 3vw, 32px);
+        margin-bottom: clamp(40px, 5vw, 60px);
+    }
+
+    .s1,
+    .s2 {
+        display: contents;
+    }
+
+    .HTMLCSS,
+    .Responsive_Design,
+    .FIGMA,
+    .flxbox1,
+    .per,
+    .en {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-family: 'FuturaLight', sans-serif;
+        font-weight: bold;
+        color: #3e3e3e;
+        font-size: clamp(15px, 1.9vw, 18px);
+        letter-spacing: 0.03em;
+        padding: 8px 0;
+        transition: var(--transition);
+    }
+
+    .HTMLCSS:hover,
+    .Responsive_Design:hover,
+    .FIGMA:hover,
+    .flxbox1:hover,
+    .per:hover,
+    .en:hover {
+        color: var(--primary-blue);
+        transform: translateX(4px);
+    }
+
+    .square3,
+    .square4,
+    .square5,
+    .square6,
+    .square7,
+    .square8 {
+        width: clamp(18px, 2.2vw, 24px);
+        height: clamp(18px, 2.2vw, 24px);
+        flex-shrink: 0;
+    }
+
+    .Language {
+        display: grid;
+        gap: clamp(16px, 2.5vw, 24px);
+        margin-top: clamp(20px, 3vw, 32px);
+    }
+
+    /* ===== Footer ===== */
+    footer {
+        width: 100%;
+        background: rgba(15, 23, 42, 0.6);
+        backdrop-filter: blur(20px);
+        margin-top: clamp(80px, 10vw, 150px);
+        padding: clamp(40px, 6vw, 60px) clamp(24px, 6vw, 120px);
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .copy_powered {
+        font-size: clamp(13px, 1.6vw, 15px);
+        font-family: 'Roboto-Regular', sans-serif;
+        color: var(--text-muted);
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        max-width: 1400px;
+        margin: 0 auto;
+        text-align: center;
+    }
+
+    .copy_powered p {
+        margin: 0;
+    }
+
+    /* ===== Advanced Responsive System ===== */
+    /* Using Rem Units & Modern Media Query Syntax */
+    
+    /* Desktop: 1200px+ */
+    @media (min-width: 75rem) {
+        .container {
+            padding-top: 10rem;
+        }
+    }
+
+    /* Tablet: 768px - 1199px */
+    @media (min-width: 48rem) and (max-width: 74.9375rem) {
+        .container {
+            padding-top: 8.75rem;
+            padding-left: 3rem;
+            padding-right: 3rem;
+        }
+
+        .experiencee {
+            margin-left: 0;
+            justify-content: space-between;
+            padding: 0 3.75rem;
+        }
+
+        .experiencee h2 {
+            text-align: left;
+        }
+
+        .Education {
+            margin-left: 0;
+            padding: 0 3.75rem;
+        }
+
+        .box1_text,
+        .box2_text {
+            margin: 1.5rem 0 0;
+            max-width: 100%;
+        }
+    }
+
+    /* Tablet Portrait: 768px - 991px */
+    @media (min-width: 48rem) and (max-width: 61.9375rem) {
+        .experiencee {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 1.5rem;
+        }
+
+        .experiencee h2 {
+            width: 100%;
+        }
+
+        .download_cv {
+            width: 100%;
+            max-width: 18.75rem;
+        }
+    }
+
+    /* Responsive Design */
+    @media (max-width: 1024px) {
+        .top_section {
+            flex-direction: column;
+            height: auto;
+            min-height: auto;
+            padding: 20px;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        .name1 {
+            width: 100%;
+            justify-content: center;
+        }
+
+        .corner_button {
+            width: 100%;
+            justify-content: center;
+        }
+
+        .container {
+            padding-top: 140px;
+        }
+    }
+
+    /* Mobile Navigation: Below 768px */
+    @media (max-width: 768px) {
+        body {
+            padding-top: 0;
+        }
+
+        .top_section {
+            position: static;
+            top: 10px;
+            width: calc(100% - 20px);
+            margin-bottom: 20px;
+            justify-content: center;
+            transform: none;
+            left: auto;
+            right: auto;
+            margin: 0 auto 20px;
+        }
+
+        .corner_button {
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .corner_button button {
+            flex: 1 1 calc(50% - 4px);
+            min-width: 0;
+            font-size: 11px;
+            padding: 8px 12px;
+        }
+
+        .container {
+            padding-top: 2rem;
+            padding-left: 1.5rem;
+            padding-right: 1.5rem;
+        }
+
+        .top_resume {
+            margin-bottom: 2.5rem;
+        }
+
+        .experiencee,
+        .Education {
+            margin-top: 3rem;
+            padding: 0;
+        }
+
+        .box1 {
+            margin-top: 2rem;
+        }
+    }
+
+    /* Mobile: Below 768px */
+    @media (max-width: 47.9375rem) {
+        .container {
+            padding-bottom: 5rem;
+            padding-left: 1.25rem;
+            padding-right: 1.25rem;
+        }
+
+        .top_resume {
+            margin-bottom: 2.25rem;
+        }
+
+        .experiencee {
+            gap: 1.25rem;
+            margin-top: 2.5rem;
+        }
+
+        .experiencee h2 {
+            font-size: 1.75rem;
+            text-align: center;
+        }
+
+        .Education {
+            font-size: 1.75rem;
+            text-align: center;
+            margin-top: 2.5rem;
+        }
+
+        .download_cv {
+            width: 100%;
+            max-width: 100%;
+            padding: 0.75rem 1.5rem;
+        }
+
+        .box1,
+        .box2,
+        .box3 {
+            padding: 2rem 1.5rem;
+            border-radius: 1.25rem;
+            margin-bottom: 2rem;
+        }
+
+        .box1_text,
+        .box2_text {
+            margin: 1.25rem 0 0;
+            text-align: left;
+            max-width: 100%;
+        }
+
+        .skills {
+            grid-template-columns: 1fr;
+            gap: 1.25rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .Professional_skillset,
+        .Languages {
+            text-align: center;
+            font-size: 1.5rem;
+            margin-top: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .HTMLCSS,
+        .Responsive_Design,
+        .FIGMA,
+        .flxbox1,
+        .per,
+        .en {
+            justify-content: center;
+            padding: 0.625rem 0;
+        }
+
+        .Language {
+            justify-items: center;
+            gap: 1.25rem;
+            margin-top: 1.5rem;
+        }
+
+        footer {
+            margin-top: 3.75rem;
+            padding: 2rem 1.5rem;
+        }
+    }
+
+    /* Small Mobile: Below 480px */
+    @media (max-width: 29.9375rem) {
+        .top_section {
+            padding: 15px;
+            border-radius: 16px;
+            justify-content: center;
+            position: static;
+            transform: none;
+            left: auto;
+            right: auto;
+            margin: 0 auto 20px;
+        }
+
+        .name1 {
+            flex-direction: column;
+            text-align: center;
+            gap: 10px;
+        }
+
+        .name1 h1 {
+            font-size: 18px;
+        }
+
+        .subject2 h3 {
+            font-size: 9px;
+        }
+
+        .corner_button {
+            flex-direction: column;
+            width: 100%;
+            gap: 8px;
+        }
+
+        .corner_button button {
+            width: 100%;
+            max-width: 100%;
+            font-size: 10px;
+            padding: 10px;
+        }
+
+        .container {
+            padding-left: 1rem;
+            padding-right: 1rem;
+        }
+
+        .top_resume {
+            flex-direction: column;
+            text-align: center;
+            gap: 0.625rem;
+            margin-bottom: 2rem;
+        }
+
+        .square2-container {
+            width: 1.5rem;
+            height: 1.5rem;
+        }
+
+        .experiencee {
+            gap: 1.125rem;
+            margin-top: 2rem;
+        }
+
+        .experiencee h2,
+        .Education {
+            font-size: 1.5rem;
+        }
+
+        .download_cv {
+            padding: 0.75rem 1.25rem;
+            font-size: 0.875rem;
+        }
+
+        .box1,
+        .box2,
+        .box3 {
+            padding: 1.5rem 1.25rem;
+            border-radius: 1rem;
+        }
+
+        .year,
+        .year2 {
+            font-size: 1.125rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .job_position,
+        .school {
+            font-size: 0.9375rem;
+        }
+
+        .box1_text,
+        .box2_text {
+            font-size: 0.875rem;
+            line-height: 1.7;
+            margin-top: 1rem;
+        }
+
+        .grade,
+        .location {
+            font-size: 0.8125rem;
+        }
+
+        .Professional_skillset,
+        .Languages {
+            font-size: 1.125rem;
+            margin-top: 2rem;
+        }
+
+        .HTMLCSS,
+        .Responsive_Design,
+        .FIGMA,
+        .flxbox1,
+        .per,
+        .en {
+            font-size: 0.875rem;
+        }
+
+        footer {
+            padding: 1.75rem 1.25rem;
+            margin-top: 3rem;
+        }
+
+        .copy_powered {
+            font-size: 0.75rem;
+            text-align: center;
+        }
+    }
+
+    /* Extra Small: Below 360px */
+    @media (max-width: 22.4375rem) {
+        .top_section {
+            padding: 0.875rem 1rem;
+        }
+
+        .name1 h1 {
+            font-size: 1.125rem;
+        }
+
+        .subject2 h3 {
+            font-size: 0.5625rem;
+            letter-spacing: 0.15em;
+        }
+
+        .top_resume .reesume {
+            font-size: 1.25rem;
+            letter-spacing: 0.2em;
+        }
+
+        .experiencee h2,
+        .Education {
+            font-size: 1.125rem;
+        }
+
+        .box1,
+        .box2,
+        .box3 {
+            padding: 1.25rem 1rem;
+        }
+
+        .year,
+        .year2 {
+            font-size: 1rem;
+        }
+
+        .job_position,
+        .school {
+            font-size: 0.875rem;
+        }
+
+        .box1_text,
+        .box2_text {
+            font-size: 0.8125rem;
+        }
+
+        .Professional_skillset,
+        .Languages {
+            font-size: 1rem;
+        }
+    }
+
+    /* Landscape Mode */
+    @media (orientation: landscape) and (max-height: 37.5rem) {
+        .container {
+            padding-top: 1.5rem;
+        }
+
+        .top_resume {
+            margin-bottom: 1.5rem;
+        }
+
+        .experiencee,
+        .Education {
+            margin-top: 1.5rem;
+        }
+    }
+
+    /* Touch Devices */
+    @media (hover: none) and (pointer: coarse) {
+        .download_cv,
+        .corner_button button {
+            min-height: 2.75rem;
+        }
+    }
+
+    /* Print Styles */
+    @media print {
+        .top_section,
+        .corner_button {
+            display: none;
+        }
+
+        .container {
+            padding-top: 0;
+        }
+
+        body {
+            background: white;
+        }
+    }
+
+    /* ===== Smooth Scrolling ===== */
+    html {
+        scroll-behavior: smooth;
+    }
+
+    /* ===== Focus States for Accessibility ===== */
+    button:focus-visible,
+    a:focus-visible {
+        outline: 2px solid var(--primary);
+        outline-offset: 4px;
+        border-radius: 4px;
+    }
+</style>
+</head>
+<body>
+<div class="container">
+    <div class="top_section">
+        <div class="name1">
+            <h1>Kasra Korivand</h1>
+            <a href="personal_web.html" class="subject2-link">
+                <div class="subject2">
+                    <div class="square1"></div>
+                    <h3>/ P R O G R A M M E R</h3>
+                </div>
+            </a>
+        </div>
+
+        <div class="corner_button">
+            <button class="button10" onclick="location.href='Personal_web.html'">ABOUT ME</button>
+            <button class="button11" onclick="location.href='resume.html'">RESUME</button>
+            <button class="button12" onclick="location.href='projects.html'">FUN FACTS</button>
+            <button class="button13" onclick="location.href='contact.html'">CONTACT</button>
+        </div>
+    </div>
+
+    <div class="top_resume">
+        <div class="square2-container">
+            <img class="square2" src="icons/square-full-solid-svgrepo-com.svg" alt="">
+        </div>
+        <h1 class="reesume">RESUME</h1>
+    </div>
+
+    <div class="experiencee">
+        <h2>Experience</h2>
+        <button class="download_cv" onclick="location.href='files/Kasra_Resume.pdf'">Download CV</button>
+    </div>
+
+    <div class="box1">
+        <h3 class="year">2025 - Present</h3>
+        <p class="job_position">FRONT - END PROGRAMMER</p>
+        <p class="box1_text">
+            I'm a student and an aspiring Front-End Developer. I build 
+            responsive layouts using HTML, CSS, and Flexbox, and design
+            clean user interfaces with Figma. My goal is to improve my 
+            JavaScript skills and grow into a professional Front-End 
+            Developer.
+        </p>
+    </div>
+
+    <h2 class="Education">Education</h2>
+
+    <div class="box2">
+        <h3 class="year2">2015 - Present</h3>
+        <p class="school">FARHIKHTE SCHOOL</p>
+        <p class="grade">9 th Grade</p>
+        <p class="location">Tehran</p>
+        <p class="box2_text">
+            I'm a student and an aspiring Front-End Developer. I build 
+            responsive layouts using HTML, CSS, and Flexbox, and design
+            clean user interfaces with Figma. My goal is to improve my 
+            JavaScript skills and grow into a professional Front-End 
+            Developer.
+        </p>
+    </div>
+
+    <div class="box3">
+        <div class="Professional_skillset">Professional skillset</div>
+
+        <div class="skills">
+          <div class="s1">
+            <div class="HTMLCSS">
+                <img class="square3" src="icons/square-full-solid-svgrepo-com.svg" alt="">
+                <p class="html_css">HTML & CSS</p>
+            </div>
+
+            <div class="FIGMA">
+                <img class="square5" src="icons/square-full-solid-svgrepo-com.svg" alt="">
+                <p class="fimgaa">Figma</p>
+            </div>
+          </div>
+
+          <div class="s2">
+            <div class="Responsive_Design">
+                <img class="square4" src="icons/square-full-solid-svgrepo-com.svg" alt="">
+                <p class="ResponsiveDesign">Responsive Design</p>
+            </div>
+
+            <div class="flxbox1">
+                <img class="square6" src="icons/square-full-solid-svgrepo-com.svg" alt="">
+                <p class="flexbox3">Flexbox</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="Languages">Languages</div>
+
+        <div class="Language">
+            <div class="per">
+                <img class="square7" src="icons/square-full-solid-svgrepo-com.svg" alt="">
+                <p class="pers">Persian (native)</p>
+            </div>
+
+            <div class="en">
+                <img class="square8" src="icons/square-full-solid-svgrepo-com.svg" alt="">
+                <p class="english">English (proficient)</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<footer>
+    <div class="copy_powered">
+        <p class="copy">© 2035 by Kasra Korivand.</p>
+        <p class="powered">Powered and secured by Kasra.</p>
+    </div>
+</footer>
+    <script>
+        // Scroll animations for cards
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all boxes
+        document.addEventListener('DOMContentLoaded', () => {
+            const boxes = document.querySelectorAll('.box1, .box2, .box3');
+            boxes.forEach((box, index) => {
+                box.style.transitionDelay = `${index * 0.2}s`;
+                observer.observe(box);
+            });
+
+            // Animate skills on hover
+            const skills = document.querySelectorAll('.HTMLCSS, .Responsive_Design, .FIGMA, .flxbox1, .per, .en');
+            skills.forEach(skill => {
+                skill.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateX(10px) scale(1.05)';
+                });
+                skill.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateX(0) scale(1)';
+                });
+            });
+        });
+
+        // Parallax effect for header
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const topResume = document.querySelector('.top_resume');
+            if (topResume && scrolled < 300) {
+                topResume.style.transform = `translateY(${scrolled * 0.3}px)`;
+                topResume.style.opacity = 1 - (scrolled / 300);
+            }
+        });
+    </script>
+</body>
+</html>

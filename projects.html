@@ -1,0 +1,791 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fun Facts - Kasra Korivand</title>
+    <style>
+        /* ===== Fonts ===== */
+        @font-face {
+            font-family: 'FuturaLight';
+            src: url('fonts/Futura-Light.otf') format('opentype');
+            font-weight: 300;
+            font-style: normal;
+        }
+        @font-face {
+            font-family: 'Poppins-ExtraBold';
+            src: url('fonts/Poppins-ExtraBold.ttf');
+            font-weight: 300;
+            font-style: normal;
+        }
+        @font-face {
+            font-family: 'Roboto-Regular';
+            src: url('fonts/Roboto-Regular.ttf');
+            font-weight: 300;
+            font-style: normal;
+        }
+        @font-face {
+            font-family: 'Roboto-Bold';
+            src: url('fonts/Roboto-Bold.ttf');
+            font-weight: 900;
+            font-style: normal;
+        }
+
+        /* ===== Modern Color Palette ===== */
+        :root {
+            --primary: #6366f1;
+            --primary-dark: #4f46e5;
+            --primary-light: #818cf8;
+            --accent: #ec4899;
+            --accent-dark: #db2777;
+            --bg-dark: #0f172a;
+            --bg-darker: #020617;
+            --bg-card: rgba(15, 23, 42, 0.8);
+            --bg-glass: rgba(255, 255, 255, 0.1);
+            --text-light: #f1f5f9;
+            --text-gray: #94a3b8;
+            --text-muted: #64748b;
+            --gradient-1: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --gradient-2: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            --gradient-3: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            --gradient-4: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+            --shadow-glow: 0 0 30px rgba(99, 102, 241, 0.3);
+            --shadow-glow-pink: 0 0 30px rgba(236, 72, 153, 0.3);
+            --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Roboto-Regular', sans-serif;
+            background: var(--bg-darker);
+            background-image: 
+                radial-gradient(at 0% 0%, rgba(99, 102, 241, 0.15) 0px, transparent 50%),
+                radial-gradient(at 100% 0%, rgba(236, 72, 153, 0.15) 0px, transparent 50%),
+                radial-gradient(at 100% 100%, rgba(79, 70, 229, 0.15) 0px, transparent 50%),
+                radial-gradient(at 0% 100%, rgba(59, 130, 246, 0.15) 0px, transparent 50%);
+            background-size: 400% 400%;
+            animation: gradientShift 15s ease infinite;
+            color: var(--text-light);
+            line-height: 1.6;
+            overflow-x: hidden;
+            position: relative;
+            min-height: 100vh;
+        }
+
+        @keyframes gradientShift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                radial-gradient(circle at 20% 50%, rgba(0, 81, 248, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(224, 213, 203, 0.2) 0%, transparent 50%);
+            animation: backgroundMove 25s ease-in-out infinite;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        @keyframes backgroundMove {
+            0%, 100% {
+                transform: translate(0, 0) scale(1);
+            }
+            50% {
+                transform: translate(-30px, -30px) scale(1.1);
+            }
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 clamp(20px, 6vw, 120px);
+            padding-top: 180px;
+            padding-bottom: 120px;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* ===== Glassmorphism Navigation ===== */
+        .top_section {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: calc(100% - 40px);
+            max-width: 1200px;
+            height: 70px;
+            background: rgba(15, 23, 42, 0.7);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 clamp(24px, 4vw, 48px);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            transition: var(--transition);
+        }
+
+        .top_section:hover {
+            background: rgba(15, 23, 42, 0.85);
+            box-shadow: 0 12px 40px rgba(99, 102, 241, 0.2);
+        }
+
+        .name1 {
+            display: flex;
+            align-items: center;
+            gap: clamp(16px, 2.5vw, 24px);
+        }
+
+        .name1 h1 {
+            margin: 0;
+            font-family: 'Roboto-Bold', sans-serif;
+            font-size: clamp(20px, 2.5vw, 28px);
+            background: var(--gradient-1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: 0.02em;
+        }
+
+        .subject2-link {
+            text-decoration: none;
+            color: inherit;
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            transition: var(--transition);
+        }
+
+        .subject2-link:hover {
+            opacity: 0.8;
+            transform: translateX(-4px);
+        }
+
+        .subject2 {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .subject2 h3 {
+            margin: 0;
+            font-family: 'FuturaLight', sans-serif;
+            color: var(--text-gray);
+            font-size: clamp(11px, 1.5vw, 14px);
+            letter-spacing: 0.2em;
+            cursor: pointer;
+        }
+
+        .square1 {
+            width: 16px;
+            height: 16px;
+            background: var(--gradient-1);
+            border-radius: 4px;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.2); opacity: 0.8; }
+        }
+
+        /* ===== Modern Navigation Buttons ===== */
+        .corner_button {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .corner_button button {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--text-gray);
+            font-family: 'FuturaLight', sans-serif;
+            font-size: clamp(11px, 1.3vw, 13px);
+            letter-spacing: 0.15em;
+            padding: 10px 20px;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .corner_button button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: var(--gradient-1);
+            transition: left 0.4s;
+            z-index: -1;
+        }
+
+        .corner_button button:hover::before {
+            left: 0;
+        }
+
+        .corner_button button:hover {
+            color: white;
+            border-color: transparent;
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-glow);
+        }
+
+        .button12 {
+            background: var(--gradient-1);
+            color: white;
+            border-color: transparent;
+        }
+
+        .button12::before {
+            display: none;
+        }
+
+        /* ===== Top Fun Facts Header ===== */
+        .top_projects {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            margin-bottom: 80px;
+            animation: fadeInDown 0.8s ease-out;
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .square2-container {
+            width: clamp(28px, 3.5vw, 36px);
+            height: clamp(28px, 3.5vw, 36px);
+            flex-shrink: 0;
+            animation: rotate 3s ease-in-out infinite;
+        }
+
+        @keyframes rotate {
+            0%, 100% { transform: rotate(0deg); }
+            50% { transform: rotate(180deg); }
+        }
+
+        .square2 {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .projects_title {
+            font-family: 'Roboto-Bold', sans-serif;
+            font-size: clamp(32px, 5vw, 56px);
+            margin: 0;
+            letter-spacing: 0.4em;
+            background: var(--gradient-1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            background-size: 200% 200%;
+            animation: gradientShift 4s ease infinite;
+            position: relative;
+        }
+
+        @keyframes gradientShift {
+            0%, 100% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+        }
+
+        .projects_title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 4px;
+            background: linear-gradient(90deg, transparent, var(--primary-blue), transparent);
+            animation: expandLine 1.5s ease-out 0.5s forwards;
+        }
+
+        @keyframes expandLine {
+            to {
+                width: 150px;
+            }
+        }
+
+        /* ===== Fun Facts Grid ===== */
+        .projects_grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: clamp(32px, 4vw, 48px);
+            margin-top: clamp(40px, 6vw, 80px);
+        }
+
+        .project_card {
+            background: rgba(15, 23, 42, 0.6);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 30px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+            padding: clamp(40px, 6vw, 60px);
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+            overflow: hidden;
+            position: relative;
+            opacity: 0;
+            transform: translateY(40px) scale(0.95);
+        }
+
+        .project_card.animate {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .project_card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0, 81, 248, 0.1), transparent);
+            transition: left 0.6s;
+        }
+
+        .project_card:hover::before {
+            left: 100%;
+        }
+
+        .project_card::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(0, 81, 248, 0.1) 0%, transparent 70%);
+            opacity: 0;
+            transition: opacity 0.6s;
+        }
+
+        .project_card:hover::after {
+            opacity: 1;
+        }
+
+        .project_card:hover {
+            transform: translateY(-12px) scale(1.03) rotate(1deg);
+            box-shadow: 0 30px 80px rgba(99, 102, 241, 0.3);
+            border-color: rgba(99, 102, 241, 0.3);
+        }
+
+        .project_header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 8px;
+        }
+
+        .project_square {
+            width: clamp(18px, 2.2vw, 24px);
+            height: clamp(18px, 2.2vw, 24px);
+            flex-shrink: 0;
+            transition: var(--transition);
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0) rotate(0deg);
+            }
+            50% {
+                transform: translateY(-8px) rotate(180deg);
+            }
+        }
+
+        .project_card:hover .project_square {
+            animation: spin 1s ease-in-out;
+        }
+
+        @keyframes spin {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        .project_title {
+            font-family: 'Roboto-Bold', sans-serif;
+            font-size: clamp(22px, 2.7vw, 28px);
+            background: var(--gradient-1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin: 0;
+            position: relative;
+            transition: var(--transition);
+        }
+
+        .project_card:hover .project_title {
+            background: linear-gradient(135deg, #0038B8, var(--primary-blue));
+            background-size: 200% 200%;
+            animation: gradientShift 2s ease infinite;
+        }
+
+        .project_description {
+            font-size: clamp(16px, 2vw, 19px);
+            font-family: 'Roboto-Regular', sans-serif;
+            line-height: 1.8;
+            color: var(--text-gray);
+            margin: 0;
+        }
+
+        /* ===== Footer ===== */
+        footer {
+            width: 100%;
+            background: rgba(15, 23, 42, 0.6);
+            backdrop-filter: blur(20px);
+            margin-top: clamp(80px, 10vw, 150px);
+            padding: clamp(40px, 6vw, 60px) clamp(24px, 6vw, 120px);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .copy_powered {
+            font-size: clamp(13px, 1.6vw, 15px);
+            font-family: 'Roboto-Regular', sans-serif;
+            color: var(--text-muted);
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            max-width: 1400px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .copy_powered p {
+            margin: 0;
+        }
+
+        /* ===== Responsive Design ===== */
+        @media (max-width: 1024px) {
+            .top_section {
+               flex-direction: column;
+                height: auto;
+                min-height: auto;
+                padding: 20px;
+                gap: 20px;
+                justify-content: center;
+                 position: static;
+        transform: none;      /* اضافه کن */
+        left: auto;           /* اضافه کن */
+        right: auto;          /* احتیاطی */
+        margin: 0 auto;  
+            }
+
+            .name1 {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .corner_button {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .container {
+                padding-top: 140px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding-top: 0;
+            }
+
+            .top_section {
+                position: static;
+                top: 10px;
+                width: calc(100% - 20px);
+                margin-bottom: 20px;
+            }
+
+            .container {
+                padding-top: 2rem;
+                padding-left: 1.5rem;
+                padding-right: 1.5rem;
+            }
+
+            .top_projects {
+                margin-bottom: 2.5rem;
+            }
+
+            .projects_grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+                margin-top: 2rem;
+            }
+
+            .corner_button {
+                flex-wrap: wrap;
+                gap: 8px;
+            }
+
+            .corner_button button {
+                flex: 1 1 calc(50% - 4px);
+                min-width: 0;
+                font-size: 11px;
+                padding: 8px 12px;
+            }
+        }
+
+        @media (max-width: 47.9375rem) {
+            .container {
+                padding-bottom: 5rem;
+                padding-left: 1.25rem;
+                padding-right: 1.25rem;
+            }
+
+            .top_projects {
+                position: static;
+                top: 10px;
+                width: calc(100% - 20px);
+                margin-bottom: 20px;
+                justify-content: center;
+                 position: static;
+        transform: none;      /* اضافه کن */
+        left: auto;           /* اضافه کن */
+        right: auto;          /* احتیاطی */
+        margin: 0 auto;  
+            }
+
+            .project_card {
+                padding: 2rem 1.5rem;
+                border-radius: 1.25rem;
+            }
+
+            .project_links {
+                flex-direction: column;
+            }
+
+            .project_link {
+                width: 100%;
+                justify-content: center;
+            }
+
+            footer {
+                margin-top: 3.75rem;
+                padding: 2rem 1.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .top_section {
+                padding: 15px;
+                border-radius: 16px;
+                justify-content: center;
+                 position: static;
+        transform: none;      /* اضافه کن */
+        left: auto;           /* اضافه کن */
+        right: auto;          /* احتیاطی */
+        margin: 0 auto;  
+            }
+
+            .name1 {
+                flex-direction: column;
+                text-align: center;
+                gap: 10px;
+            }
+
+            .name1 h1 {
+                font-size: 18px;
+            }
+
+            .subject2 h3 {
+                font-size: 9px;
+            }
+
+            .corner_button {
+                flex-direction: column;
+                width: 100%;
+                gap: 8px;
+            }
+
+            .corner_button button {
+                width: 100%;
+                max-width: 100%;
+                font-size: 10px;
+                padding: 10px;
+            }
+
+            .container {
+                padding-left: 1rem;
+                padding-right: 1rem;
+            }
+
+            .project_card {
+                padding: 1.5rem 1.25rem;
+            }
+
+            .projects_title {
+                font-size: 24px;
+                letter-spacing: 0.2em;
+            }
+        }
+
+        /* ===== Smooth Scrolling ===== */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* ===== Focus States for Accessibility ===== */
+        button:focus-visible,
+        a:focus-visible {
+            outline: 2px solid var(--primary);
+            outline-offset: 4px;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="top_section">
+            <div class="name1">
+                <h1>Kasra Korivand</h1>
+                <a href="personal_web.html" class="subject2-link">
+                    <div class="subject2">
+                        <div class="square1"></div>
+                        <h3>/ P R O G R A M M E R</h3>
+                    </div>
+                </a>
+            </div>
+
+            <div class="corner_button">
+                <button class="button10" onclick="location.href='Personal_web.html'">ABOUT ME</button>
+                <button class="button11" onclick="location.href='resume.html'">RESUME</button>
+                <button class="button12" onclick="location.href='projects.html'">FUN FACTS</button>
+                <button class="button13" onclick="location.href='contact.html'">CONTACT</button>
+            </div>
+        </div>
+
+        <div class="top_projects">
+            <div class="square2-container">
+                <img class="square2" src="icons/square-full-solid-svgrepo-com.svg" alt="">
+            </div>
+            <h1 class="projects_title">FUN FACTS</h1>
+        </div>
+
+        <div class="projects_grid">
+            <div class="project_card">
+                <div class="project_header">
+                    <img class="project_square" src="icons/square-full-solid-svgrepo-com.svg" alt="">
+                    <h2 class="project_title">Fun Fact 1</h2>
+                </div>
+                <p class="project_description">
+                    I love experimenting with CSS colors! I've tested over 20 different shades on a single page to find the perfect combination, and each time I discover something new about design and layout.
+                </p>
+            </div>
+
+            <div class="project_card">
+                <div class="project_header">
+                    <img class="project_square" src="icons/square-full-solid-svgrepo-com.svg" alt="">
+                    <h2 class="project_title">Fun Fact 2</h2>
+                </div>
+                <p class="project_description">
+                    Whenever I code, coffee is always by my side. I once drank three cups just to write a simple HTML page, and I realized caffeine really boosts focus and keeps me energized.
+                </p>
+            </div>
+
+            <div class="project_card">
+                <div class="project_header">
+                    <img class="project_square" src="icons/square-full-solid-svgrepo-com.svg" alt="">
+                    <h2 class="project_title">Fun Fact 3</h2>
+                </div>
+                <p class="project_description">
+                    My first HTML page was just a text and a button. After weeks of practice, I can now build responsive pages with Flexbox and Grid, and every project makes me more confident in my skills.
+                </p>
+            </div>
+
+            <div class="project_card">
+                <div class="project_header">
+                    <img class="project_square" src="icons/square-full-solid-svgrepo-com.svg" alt="">
+                    <h2 class="project_title">Fun Fact 4</h2>
+                </div>
+                <p class="project_description">
+                    Every time I encounter a bug, I play a random song to reduce stress and regain focus. Coding with music always makes problem-solving easier and more fun!
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="copy_powered">
+            <p class="copy">© 2035 by Kasra Korivand.</p>
+            <p class="powered">Powered and secured by Kasra.</p>
+        </div>
+    </footer>
+    <script>
+        // Scroll animations for cards
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry, index) => {
+                if (entry.isIntersecting) {
+                    setTimeout(() => {
+                        entry.target.classList.add('animate');
+                    }, index * 150);
+                }
+            });
+        }, observerOptions);
+
+        // Observe all cards
+        document.addEventListener('DOMContentLoaded', () => {
+            const cards = document.querySelectorAll('.project_card');
+            cards.forEach((card) => {
+                observer.observe(card);
+            });
+        });
+
+        // Add stagger effect on hover
+        document.querySelectorAll('.project_card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transition = 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)';
+            });
+        });
+    </script>
+</body>
+</html>
