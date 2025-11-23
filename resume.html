@@ -702,6 +702,11 @@
             padding: 20px;
             gap: 20px;
             justify-content: center;
+            position: static;
+            transform: none;
+            left: auto;
+            right: auto;
+            margin: 0 auto;
         }
 
         .name1 {
@@ -731,10 +736,11 @@
             width: calc(100% - 20px);
             margin-bottom: 20px;
             justify-content: center;
+            position: static;
             transform: none;
             left: auto;
             right: auto;
-            margin: 0 auto 20px;
+            margin: 0 auto;
         }
 
         .corner_button {
@@ -776,6 +782,19 @@
             padding-bottom: 5rem;
             padding-left: 1.25rem;
             padding-right: 1.25rem;
+        }
+
+        .top_section {
+            position: static;
+            top: 10px;
+            width: calc(100% - 20px);
+            margin-bottom: 20px;
+            justify-content: center;
+            position: static;
+            transform: none;
+            left: auto;
+            right: auto;
+            margin: 0 auto;
         }
 
         .top_resume {
@@ -856,7 +875,7 @@
     }
 
     /* Small Mobile: Below 480px */
-    @media (max-width: 29.9375rem) {
+    @media (max-width: 480px) {
         .top_section {
             padding: 15px;
             border-radius: 16px;
@@ -865,7 +884,7 @@
             transform: none;
             left: auto;
             right: auto;
-            margin: 0 auto 20px;
+            margin: 0 auto;
         }
 
         .name1 {
@@ -983,78 +1002,11 @@
         }
     }
 
-    /* Extra Small: Below 360px */
-    @media (max-width: 22.4375rem) {
-        .top_section {
-            padding: 0.875rem 1rem;
-        }
-
-        .name1 h1 {
-            font-size: 1.125rem;
-        }
-
-        .subject2 h3 {
-            font-size: 0.5625rem;
-            letter-spacing: 0.15em;
-        }
-
-        .top_resume .reesume {
-            font-size: 1.25rem;
-            letter-spacing: 0.2em;
-        }
-
-        .experiencee h2,
-        .Education {
-            font-size: 1.125rem;
-        }
-
-        .box1,
-        .box2,
-        .box3 {
-            padding: 1.25rem 1rem;
-        }
-
-        .year,
-        .year2 {
-            font-size: 1rem;
-        }
-
-        .job_position,
-        .school {
-            font-size: 0.875rem;
-        }
-
-        .box1_text,
-        .box2_text {
-            font-size: 0.8125rem;
-        }
-
-        .Professional_skillset,
-        .Languages {
-            font-size: 1rem;
-        }
-    }
-
-    /* Landscape Mode */
-    @media (orientation: landscape) and (max-height: 37.5rem) {
-        .container {
-            padding-top: 1.5rem;
-        }
-
-        .top_resume {
-            margin-bottom: 1.5rem;
-        }
-
-        .experiencee,
-        .Education {
-            margin-top: 1.5rem;
-        }
-    }
+   
 
     /* Touch Devices */
     @media (hover: none) and (pointer: coarse) {
-        .download_cv,
-        .corner_button button {
+        .download_cv {
             min-height: 2.75rem;
         }
     }
@@ -1103,7 +1055,7 @@
         </div>
 
         <div class="corner_button">
-            <button class="button10" onclick="location.href='index'">ABOUT ME</button>
+            <button class="button10" onclick="location.href='Personal_web.html'">ABOUT ME</button>
             <button class="button11" onclick="location.href='resume.html'">RESUME</button>
             <button class="button12" onclick="location.href='projects.html'">FUN FACTS</button>
             <button class="button13" onclick="location.href='contact.html'">CONTACT</button>
